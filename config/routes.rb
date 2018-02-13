@@ -1,9 +1,8 @@
+require 'sidekiq/web'
 Rails.application.routes.draw do
   devise_for :users
   root "articles#index"
-  
-
-
+  mount Sidekiq::Web => '/sidekiq'
   resources :articles do
     resources :comments
   end
