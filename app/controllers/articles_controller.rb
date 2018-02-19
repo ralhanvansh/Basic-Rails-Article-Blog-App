@@ -32,7 +32,7 @@ class ArticlesController < ApplicationController
     @article = current_user.articles.build(article_params)
     if @article.save
       redirect_to @article
-      NewsletterJob.perform_now(current_user.id)
+      NewsletterJob.perform_later(current_user.id)
     else
       render 'new'
     end
