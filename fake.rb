@@ -16,19 +16,19 @@ def find_retries
 
   filters = []
   rs.each do |job|
-    case 
-      when YAML.load(job.value)["wrapped"].include? "letter"
-        filters << job
-      when YAML.load(job.value)["wrapped"].include? "Emailer"
-        puts "Emailer"
-      when YAML.load(job.value)["wrapped"].include? "deliver_"
-        puts "deliver_"
-      when YAML.load(job.value)["wrapped"].include? "spreader"
-        puts "spreader"
-      when YAML.load(job.value)["wrapped"].include? "Couldn't Find"
-        puts "Couldn't Find"
-      when YAML.load(job.value)["wrapped"].include? "JMTA"
-        puts "JMTA"
+    case
+    when (YAML.load(job.value)["wrapped"].include? ("letter"))
+      filters << job
+    when (YAML.load(job.value)["wrapped"].include? ("Emailer"))
+      puts "Emailer"
+    when (YAML.load(job.value)["wrapped"].include? ("deliver_"))
+      puts "deliver_"
+    when (YAML.load(job.value)["wrapped"].include? ("spreader"))
+      puts "spreader"
+    when (YAML.load(job.value)["wrapped"].include? ("Couldn't Find"))
+      puts "Couldn't Find"
+    when (YAML.load(job.value)["wrapped"].include? ("JMTA"))
+      puts "JMTA"
     end
   end
 end
